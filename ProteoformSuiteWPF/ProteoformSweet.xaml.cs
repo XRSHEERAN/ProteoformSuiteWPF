@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Microsoft.Win32;
 namespace ProteoformSuiteWPF
 {
     /// <summary>
@@ -23,6 +23,7 @@ namespace ProteoformSuiteWPF
     {
         #region Private Fields
         ISweetForm current_form;
+        SaveFileDialog saveExcelDialog;
         #endregion
 
         public ProteoformSweet()
@@ -30,6 +31,9 @@ namespace ProteoformSuiteWPF
             InitializeComponent();
         }
 
+        /**
+         * !!!!!!!!!!!!!!Problem: MDI Application look may not be supported; TBA what the application looks
+         **/
         private void ExportTables_Click(object sender, RoutedEventArgs e)
         {
             List<DataTable> data_tables = current_form.SetTables();
@@ -39,7 +43,20 @@ namespace ProteoformSuiteWPF
                 MessageBox.Show("There is no table on this page to export. Please navigate to another page with the Results tab.");
                 return;
             }
+            ExcelWriter writer = new ExcelWriter();
+            writer.ExportToExcel(data_tables, (current_form as Window).Name);
+            //SaveExcelFile(writer, (current_form as Window).mdi)
+        }
 
+        private void SaveExcelFile(ExcelWriter writer, string filename)
+        {
+            saveExcelDialog.FileName = filename;
+            
+            if (saveExcelDialog.ShowDialog()==true)
+            {
+                MessageBox.Show(writer.SaveToExcel(saveExcelDialog.FileName));
+            }
+            else return;
         }
     }
 }

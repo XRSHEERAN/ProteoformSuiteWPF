@@ -107,12 +107,22 @@
     <Compile Include="DisplayHelper\DisplayObject.cs" />
     <Compile Include="DisplayHelper\DisplayUtility.cs" />
     <Compile Include="HelperClass\MDIHelpers.cs" />
+    <Compile Include="InputBox.xaml.cs">
+      <DependentUpon>InputBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoadResults.xaml.cs">
       <DependentUpon>LoadResults.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProteoformSweet.xaml.cs">
       <DependentUpon>ProteoformSweet.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RawExperimentalComponents.xaml.cs">
+      <DependentUpon>RawExperimentalComponents.xaml</DependentUpon>
+    </Compile>
+    <Page Include="InputBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoadResults.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -132,6 +142,10 @@
     <Page Include="ProteoformSweet.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RawExperimentalComponents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

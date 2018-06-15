@@ -85,12 +85,12 @@
                         <ColumnDefinition Width="4*"/>
                         <ColumnDefinition Width="6*"/>
                     </Grid.ColumnDefinitions>
-                    <wpfTool:IntegerUpDown Grid.Column="0" Grid.Row="0" Margin="5 5 5 5"></wpfTool:IntegerUpDown>
+                    <wpfTool:IntegerUpDown x:Name="nUD_mass_tolerance" Grid.Column="0" Grid.Row="0" Margin="5 5 5 5" Maximum="100" Minimum="0" DefaultValue="0" DisplayDefaultValueOnEmptyText="True"/>
                     <Label Grid.Column="1" Grid.Row="0" Margin="5 5 5 5">Mass Tolerance for Merging Artifacts (ppm)</Label>
-                    <wpfTool:IntegerUpDown Grid.Column="0" Grid.Row="1" Margin="5 5 5 5"></wpfTool:IntegerUpDown>
+                    <wpfTool:IntegerUpDown x:Name="nUD_min_liklihood_ratio" Grid.Column="0" Grid.Row="1" Margin="5 5 5 5" Maximum="100" Minimum="-100" DefaultValue="0" DisplayDefaultValueOnEmptyText="True" UpdateValueOnEnterKey="True"/>
                     <Label Grid.Column="1" Grid.Row="1" Margin="5 5 5 5">Min. Likelihood Ratio</Label>
               
-                    <wpfTool:IntegerUpDown Grid.Column="0" Grid.Row="2" Margin="5 5 5 5"></wpfTool:IntegerUpDown>
+                    <wpfTool:DecimalUpDown x:Name="nUD_max_fit" Grid.Column="0" Grid.Row="2" Margin="5 5 5 5" Minimum="0" Maximum="100" Increment="1" DefaultValue="0.20" Value="0.20" DisplayDefaultValueOnEmptyText="True" UpdateValueOnEnterKey="True"></wpfTool:DecimalUpDown>
                     <Label Grid.Column="1" Grid.Row="2" Margin="5 5 5 5">
                         Max Fit
                     </Label>

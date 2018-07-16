@@ -31,6 +31,7 @@
                 <MenuItem Header="Identified Proteoforms"/>
                 <MenuItem Header="Quantification"/>
                 <MenuItem Header="Results Summary"/>
+                <MenuItem Header="test" Click="testWin"/>
             </MenuItem>
             <MenuItem Header="Method">
                 <MenuItem Header="Save Method" />

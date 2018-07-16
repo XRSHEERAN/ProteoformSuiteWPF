@@ -164,5 +164,11 @@ namespace ProteoWPFSuite
         {
             Application.Current.Shutdown();
         }
+
+        private void testWin(object sender, RoutedEventArgs e)
+        {
+            testWin curr = new testWin();
+            curr.Show();
+        }
     }
 }

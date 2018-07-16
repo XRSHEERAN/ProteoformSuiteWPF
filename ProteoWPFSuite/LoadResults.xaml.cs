@@ -319,12 +319,12 @@ namespace ProteoWPFSuite
             {
                 dgv.Refresh();
             }
-            ProteoformSweet parMDI = ((MainWindow)MDIHelpers.getParentWindow(this)).MDIParentControl; //get the parent control of the form;
-            if (parMDI != null) //doesn't work first time
+            //ProteoformSweet parMDI = ((MainWindow)MDIHelpers.getParentWindow(this)).MDIParentControl; //get the parent control of the form;
+            /*if (parMDI != null) //doesn't work first time
             {
                 ///parMDI.enable_quantificationToolStripMenuItem(Sweet.lollipop.input_files.Any(f => f.purpose == Purpose.Quantification));
                 ///parMDI.enable_topDownToolStripMenuItem(Sweet.lollipop.input_files.Any(f => f.purpose == Purpose.TopDown));
-            }
+            }*/
         }
 
         private void reload_dgvs()

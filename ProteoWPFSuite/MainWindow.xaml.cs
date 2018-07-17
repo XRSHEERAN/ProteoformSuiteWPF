@@ -23,11 +23,13 @@ namespace ProteoWPFSuite
         public MainWindow()
         {
             InitializeComponent();
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            this.Activate();
         }
 
         private void ProteoformSweet_Loaded(object sender, RoutedEventArgs e)
         {
-
+            
         }
     }
 

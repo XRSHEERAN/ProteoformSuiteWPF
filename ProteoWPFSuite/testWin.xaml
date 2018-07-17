@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProteoWPFSuite"
         mc:Ignorable="d"
-        Title="testWin" Height="450" Width="800" MinHeight="280" MinWidth="500">
+        Title="testWin" Height="450" Width="800" MinHeight="300" MinWidth="500">
     <Grid>
         <local:NeuCodePairs></local:NeuCodePairs>
     </Grid>

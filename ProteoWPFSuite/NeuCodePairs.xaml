@@ -7,19 +7,21 @@
              xmlns:winformchart="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
              xmlns:local="clr-namespace:ProteoWPFSuite"
              mc:Ignorable="d" 
-             VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinHeight="280" MinWidth="500">
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinHeight="400" MinWidth="600">
 
     <Grid>
-        
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="7*"/>
+            <RowDefinition Height="141*"/>
             <RowDefinition Height="3"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="168*"/>
+            <RowDefinition Height="88*"/>
         </Grid.RowDefinitions>
-        
+
         <Grid>
             <WindowsFormsHost>
-                <winform:DataGridView x:Name="dgv_RawExpNeuCodePairs" AllowUserToOrderColumns="True" ColumnHeadersHeight="18" ColumnHeadersHeightSizeMode="AutoSize" Dock="Fill" Size="100,100">
+                <winform:DataGridView x:Name="dgv_RawExpNeuCodePairs" AllowUserToOrderColumns="True" ColumnHeadersHeight="18" ColumnHeadersHeightSizeMode="AutoSize" Dock="Fill" >
                     <winform:DataGridView.RowTemplate>
                         <winform:DataGridViewRow Height="28" ReadOnly="True"/>
                     </winform:DataGridView.RowTemplate>
@@ -28,7 +30,7 @@
             </WindowsFormsHost>
         </Grid>
         <GridSplitter Grid.Row="1" Background="LightGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ResizeDirection="Rows" />
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="3"/>
@@ -73,8 +75,49 @@
                     </WindowsFormsHost>
                 </Grid>
                 <GridSplitter ResizeDirection="Rows" Grid.Row="1" Background="LightGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-                <!--Group Box Part-->
-                <Grid Grid.Row="2"></Grid>
+                <!--Group Box Part * Avoided Spliting since it seems to have little use-->
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <GroupBox Grid.Row="0" x:Name="kCtAcceptRange" Header="Acceptable Lysine Counts" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabIndex="12" FontSize="10">
+                        <Grid Margin="0 0 0 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Margin="0 0 0 0" Height="23" Grid.Column="0" Grid.Row="0" FontSize="10">K-Min</Label>
+                            <Label Margin="0,0,0,0" Height="23" Grid.Column="0" Grid.Row="1" FontSize="10">K-Max</Label>
+                            <xctk:DoubleUpDown Margin="0 0 0 0" Height="20" Grid.Column="1" ></xctk:DoubleUpDown>
+                            <xctk:DoubleUpDown Margin="0 0 0 0" Height="20" Grid.Column="1" Grid.Row="1" ></xctk:DoubleUpDown>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox2" Header="Axis Limits" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabIndex="12" FontSize="9">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <xctk:IntegerUpDown Grid.Row="0" Grid.ColumnSpan="2" Height="20" Margin="24 0 24 0"></xctk:IntegerUpDown>
+                            <xctk:IntegerUpDown Grid.Row="2" Grid.ColumnSpan="2" Height="20" Margin="24 0 24 0"></xctk:IntegerUpDown>
+                            <xctk:IntegerUpDown Grid.Row="1" Grid.Column="0" Height="20" Margin="3 0 3 0"></xctk:IntegerUpDown>
+                            <xctk:IntegerUpDown Grid.Row="1" Grid.Column="1" Height="20" Margin="3 0 3 0"></xctk:IntegerUpDown>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
             </Grid>
             <GridSplitter ResizeDirection="Columns" Grid.Column="1" Background="LightGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             <Grid Grid.Column="2">
@@ -103,7 +146,45 @@
                 </Grid>
                 <GridSplitter ResizeDirection="Rows" Grid.Row="1" Background="LightGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
                 <!--Group Box Part-->
-                <Grid Grid.Row="2"></Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox x:Name="groupBox1" Header="Acceptable Intensity Counts" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabIndex="12" FontSize="9">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Grid.Row="0" FontSize="9">I- Ratio Min</Label>
+                            <Label Grid.Column="0" Grid.Row="1" FontSize="9">I- Ratio Max</Label>
+                            <xctk:DoubleUpDown Grid.Column="1" Margin="1 1 1 1"></xctk:DoubleUpDown>
+                            <xctk:DoubleUpDown Grid.Column="1" Grid.Row="1" Margin="1 1 1 1"></xctk:DoubleUpDown>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox x:Name="groupBox3" Header="Axis Limits" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabIndex="12" FontSize="9">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <xctk:IntegerUpDown Grid.Row="0" Grid.ColumnSpan="2" Height="20" Margin="24 0 24 0"></xctk:IntegerUpDown>
+                            <xctk:IntegerUpDown Grid.Row="2" Grid.ColumnSpan="2" Height="20" Margin="24 0 24 0"></xctk:IntegerUpDown>
+                            <xctk:IntegerUpDown Grid.Row="1" Grid.Column="0" Height="20" Margin="3 0 3 0"></xctk:IntegerUpDown>
+                            <xctk:IntegerUpDown Grid.Row="1" Grid.Column="1" Height="20" Margin="3 0 3 0"></xctk:IntegerUpDown>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
             </Grid>
         </Grid>
     </Grid>

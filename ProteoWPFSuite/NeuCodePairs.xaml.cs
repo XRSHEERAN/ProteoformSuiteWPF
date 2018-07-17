@@ -2,18 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
+using System.Drawing;
+using System.Windows;
 namespace ProteoWPFSuite
 {
     /// <summary>
@@ -24,6 +15,10 @@ namespace ProteoWPFSuite
         public NeuCodePairs()
         {
             InitializeComponent();
+
+            //chart1 init
+            this.ct_LysineCount.Cursor = System.Windows.Forms.Cursors.No;
+
         }
 
         public List<DataTable> DataTables => throw new NotImplementedException();
@@ -58,9 +53,25 @@ namespace ProteoWPFSuite
             throw new NotImplementedException();
         }
 
+        System.Drawing.Point? ct_intensityRatio_prevPosition = null;
+        System.Windows.Forms.ToolTip ct_intensityRatio_tt = new System.Windows.Forms.ToolTip();
+        void ct_IntensityRatio_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                DisplayUtility.tooltip_graph_display(ct_intensityRatio_tt, e, this.ct_IntensityRatio, ct_intensityRatio_prevPosition);
+            }
+        }
+
+        System.Drawing.Point? ct_LysineCount_prevPosition = null;
+        System.Windows.Forms.ToolTip ct_LysineCount_tt = new System.Windows.Forms.ToolTip();
         private void ct_LysineCount_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                
+                DisplayUtility.tooltip_graph_display(ct_LysineCount_tt, e, ct_LysineCount, ct_LysineCount_prevPosition);
+            }
         }
     }
 }

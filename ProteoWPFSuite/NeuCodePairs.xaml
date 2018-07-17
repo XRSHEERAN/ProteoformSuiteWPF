@@ -4,10 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:winform="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
-             xmlns:charting="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
+             xmlns:winformchart="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
              xmlns:local="clr-namespace:ProteoWPFSuite"
              mc:Ignorable="d" 
-             VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+             VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinHeight="280" MinWidth="500">
 
     <Grid>
         
@@ -42,9 +42,34 @@
                     <RowDefinition Height="1.5*"/>
                 </Grid.RowDefinitions>
                 <!--Graph-->
-                <Grid >
+                <Grid>
                     <WindowsFormsHost>
-                        <charting:Chart x:Name="ct_LysineCount" Palette="BrightPastel" Text="chart1" Dock="Fill" MouseClick="ct_LysineCount_MouseClick" Location="0, 0"/>
+                        <!--Part of this control coded in backend .cs-->
+                        <winformchart:Chart x:Name="ct_LysineCount" Palette="BrightPastel" Text="chart1" Dock="Fill" MouseClick="ct_LysineCount_MouseClick" Visible="True">
+                            <winformchart:Chart.Series>
+                                <winformchart:Series Name="lysineCount" ChartType="Line" ChartArea="ChartArea1" Legend="Legend1" MarkerBorderWidth="1" MarkerSize="5">
+                                    <winformchart:Series.SmartLabelStyle>
+                                        <winformchart:SmartLabelStyle/>
+                                    </winformchart:Series.SmartLabelStyle>
+                                </winformchart:Series>
+                            </winformchart:Chart.Series>
+
+                            <winformchart:Chart.BorderSkin>
+                                <winformchart:BorderSkin/>
+                            </winformchart:Chart.BorderSkin>
+                            <winformchart:Chart.Legends>
+                                <winformchart:Legend Name="Legend1" Enabled="False">
+                                    <winformchart:Legend.Position>
+                                        <winformchart:ElementPosition/>
+                                    </winformchart:Legend.Position>
+                                </winformchart:Legend>
+                            </winformchart:Chart.Legends>
+                            <winformchart:Chart.ChartAreas>
+                                <winformchart:ChartArea x:Name="ChartArea1">
+
+                                </winformchart:ChartArea>
+                            </winformchart:Chart.ChartAreas>
+                        </winformchart:Chart>
                     </WindowsFormsHost>
                 </Grid>
                 <GridSplitter ResizeDirection="Rows" Grid.Row="1" Background="LightGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
@@ -54,7 +79,31 @@
             <GridSplitter ResizeDirection="Columns" Grid.Column="1" Background="LightGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             <Grid Grid.Column="2">
                 <!--codes for right chart and GroupBox-->
-                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="3"/>
+                    <RowDefinition Height="1.5*"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <WindowsFormsHost>
+                        <winformchart:Chart x:Name="ct_IntensityRatio" Dock="Fill" MouseClick="ct_IntensityRatio_MouseClick" Location="0, 0" Margin="2, 2, 2, 2" TabIndex="1" Text="chart1">
+                            <winformchart:Chart.Series>
+                                <winformchart:Series ChartType="Line" ChartArea="ChartArea1" Name="intensityRatio" Legend="Legend1"/>
+                            </winformchart:Chart.Series>
+                            <winformchart:Chart.Legends>
+                                <winformchart:Legend Name="Legend1" Enabled="False"/>
+                            </winformchart:Chart.Legends>
+                            <winformchart:Chart.ChartAreas>
+                                <winformchart:ChartArea Name="ChartArea1">
+
+                                </winformchart:ChartArea>
+                            </winformchart:Chart.ChartAreas>
+                        </winformchart:Chart>
+                    </WindowsFormsHost>
+                </Grid>
+                <GridSplitter ResizeDirection="Rows" Grid.Row="1" Background="LightGray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                <!--Group Box Part-->
+                <Grid Grid.Row="2"></Grid>
             </Grid>
         </Grid>
     </Grid>

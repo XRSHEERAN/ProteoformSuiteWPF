@@ -150,9 +150,9 @@ namespace ProteoWPFSuite
         {
             populate_file_lists();
         }
-        private void cmb_loadTable1_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmb_loadTable1_SelectedIndexChanged(object sender, SelectionChangedEventArgs e)
         {
-            lb_filter1.Content = cmb_loadTable1.SelectedItem.ToString();
+            lb_filter1.Content = (sender as ComboBox).SelectedItem.ToString();
         }
         private void populate_file_lists()
         {
@@ -353,7 +353,7 @@ namespace ProteoWPFSuite
         #endregion CELL FORMATTING Private Methods
 
         #region ADD BUTTONS Private Methods
-        private void btn_addFiles1_Click(object sender, EventArgs e)
+        private void btn_addFiles1_Click(object sender, RoutedEventArgs e)
         {
             add_files(cmb_loadTable1, dgv_loadFiles1);
         }
@@ -415,7 +415,7 @@ namespace ProteoWPFSuite
         #endregion ADD BUTTONS Private Methods
 
         #region CLEAR BUTTONS Private Methods
-        private void btn_clearFiles1_Click(object sender, EventArgs e)
+        private void btn_clearFiles1_Click(object sender, RoutedEventArgs e)
         {
             clear_files(cmb_loadTable1, dgv_loadFiles1);
         }
@@ -434,7 +434,7 @@ namespace ProteoWPFSuite
 
         #region FULL RUN & STEP THROUGH Private Methods
 
-        private void btn_fullRun_Click(object sender, EventArgs e)
+        private void btn_fullRun_Click(object sender, RoutedEventArgs e)
         {
             ProteoformSweet parMDI = ((MainWindow)MDIHelpers.getParentWindow(this)).MDIParentControl; //get the parent control of the form;
             ///Stopwatch successful_run = parMDI.full_run();
@@ -443,13 +443,13 @@ namespace ProteoWPFSuite
             ///    + ". Feel free to explore using the Results menu.", "Full Run");
             ///else MessageBox.Show("Method did not successfully run.", "Full Run");
         }
-        private void bt_clearResults_Click(object sender, EventArgs e)
+        private void bt_clearResults_Click(object sender, RoutedEventArgs e)
         {
             Sweet.lollipop = new Lollipop();
             ClearListsTablesFigures(true);
         }
 
-        private void bt_stepthru_Click(object sender, EventArgs e)
+        private void bt_stepthru_Click(object sender, RoutedEventArgs e)
         {
             ProteoformSweet parMDI = ((MainWindow)MDIHelpers.getParentWindow(this)).MDIParentControl; //get the parent control of the form;
             ///parMDI.resultsToolStripMenuItem.ShowDropDown();
@@ -458,7 +458,7 @@ namespace ProteoWPFSuite
         }
 
         System.Windows.Forms.FolderBrowserDialog folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
-        private void btn_browseSummarySaveFolder_Click(object sender, EventArgs e)
+        private void btn_browseSummarySaveFolder_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.DialogResult dr = folderBrowser.ShowDialog();
             if (dr == System.Windows.Forms.DialogResult.OK)
@@ -482,7 +482,7 @@ namespace ProteoWPFSuite
 
         #region CHANGED TABLE SELECTION Private Methods
 
-        private void bt_calibrate_Click(object sender, EventArgs e)
+        private void bt_calibrate_Click(object sender, RoutedEventArgs e)
         {
             //if (Sweet.lollipop.input_files.Where(f => f.purpose == Purpose.SpectraFile).Count() == 0)
             //{
@@ -497,7 +497,7 @@ namespace ProteoWPFSuite
             MessageBox.Show(Sweet.lollipop.calibrate_files());
         }
 
-        private void bt_deconvolute_Click(object sender, EventArgs e)
+        private void bt_deconvolute_Click(object sender, RoutedEventArgs e)
         {
             if (Sweet.lollipop.input_files.Where(f => f.purpose == Purpose.SpectraFile).Count() == 0)
             {
@@ -559,18 +559,18 @@ namespace ProteoWPFSuite
 
         #endregion Cell Validation Methods
 
-        private void cb_calibrate_raw_files_CheckedChanged(object sender, EventArgs e)
+        private void cb_calibrate_raw_files_CheckedChanged(object sender, RoutedEventArgs e)
         {
             Sweet.lollipop.calibrate_raw_files = (bool)cb_calibrate_raw_files.IsChecked;
         }
 
-        private void cb_calibrate_td_files_CheckedChanged(object sender, EventArgs e)
+        private void cb_calibrate_td_files_CheckedChanged(object sender, RoutedEventArgs e)
         {
             Sweet.lollipop.calibrate_td_files = (bool)cb_calibrate_td_files.IsChecked;
         }
         /*private void topbar_splitcontainer_SplitterMoved(object sender, SplitterEventArgs e)
-        {
+{
 
-        }*/
+}*/
     }
 }

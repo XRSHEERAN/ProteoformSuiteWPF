@@ -1,27 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Windows.Controls;
-using System.Drawing;
-using System.Windows;
+using ProteoformSuiteInternal;
+using System.Threading.Tasks;
 namespace ProteoWPFSuite
 {
     /// <summary>
     /// Interaction logic for NeuCodePairs.xaml
     /// </summary>
-    public partial class NeuCodePairs : UserControl, ISweetForm
+    public partial class NeuCodePairs : UserControl, ISweetForm,ITabbedMDI
     {
+        #region Public Constructor
         public NeuCodePairs()
         {
             InitializeComponent();
-
+            
             //chart1 init
             this.ct_LysineCount.Cursor = System.Windows.Forms.Cursors.No;
 
+            //InitializeParameterSet();
         }
+        #endregion Public Constructor
 
-        public List<DataTable> DataTables => throw new NotImplementedException();
+        #region Public Property
+
+        public List<DataTable> DataTables { get; private set; }
+
+        public ProteoformSweet MDIParent { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        #endregion Public Property
+
 
         public void ClearListsTablesFigures(bool clear_following_forms)
         {
@@ -53,6 +62,16 @@ namespace ProteoWPFSuite
             throw new NotImplementedException();
         }
 
+        #region Private Methods
+        private void IRatMinAcceptable_ValueChanged(object sender, EventArgs e)
+        {
+            Sweet.lollipop.min_intensity_ratio = IRatMinAcceptable.Value;
+            Parallel.ForEach(Sweet.lollipop.raw_neucode_pairs, p => p.set_accepted());
+            dgv_RawExpNeuCodePairs.Refresh();
+            this.MDIParent.aggregatedProteoforms.ClearListsTablesFigures(true);
+        }
+        #endregion Private Methods
+
         System.Drawing.Point? ct_intensityRatio_prevPosition = null;
         System.Windows.Forms.ToolTip ct_intensityRatio_tt = new System.Windows.Forms.ToolTip();
         void ct_IntensityRatio_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -65,6 +84,8 @@ namespace ProteoWPFSuite
 
         System.Drawing.Point? ct_LysineCount_prevPosition = null;
         System.Windows.Forms.ToolTip ct_LysineCount_tt = new System.Windows.Forms.ToolTip();
+        
+
         private void ct_LysineCount_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)

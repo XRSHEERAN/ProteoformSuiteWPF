@@ -7,7 +7,6 @@
              xmlns:winformchart="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
              xmlns:local="clr-namespace:ProteoWPFSuite"
              mc:Ignorable="d" 
-             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinHeight="400" MinWidth="600">
 
     <Grid>
@@ -84,7 +83,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <GroupBox Grid.Row="0" x:Name="kCtAcceptRange" Header="Acceptable Lysine Counts" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabIndex="12" FontSize="10">
+                    <GroupBox Grid.Row="0" x:Name="kCtAcceptRange" Header="Acceptable Lysine Counts" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabIndex="12" FontSize="11">
                         <Grid Margin="0 0 0 0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*"></RowDefinition>
@@ -94,15 +93,22 @@
                                 <ColumnDefinition Width="1*"></ColumnDefinition>
                                 <ColumnDefinition Width="1.5*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Label Margin="0 0 0 0" Height="23" Grid.Column="0" Grid.Row="0" FontSize="10">K-Min</Label>
-                            <Label Margin="0,0,0,0" Height="23" Grid.Column="0" Grid.Row="1" FontSize="10">K-Max</Label>
-                            <xctk:DoubleUpDown Margin="0 0 0 0" Height="20" Grid.Column="1" ></xctk:DoubleUpDown>
-                            <xctk:DoubleUpDown Margin="0 0 0 0" Height="20" Grid.Column="1" Grid.Row="1" ></xctk:DoubleUpDown>
+                            <Label Margin="0 0 0 0" Height="23" Grid.Column="0" Grid.Row="0" FontSize="11">K-Min</Label>
+                            <Label Margin="0,0,0,0" Height="23" Grid.Column="0" Grid.Row="1" FontSize="11">K-Max</Label>
+                            <WindowsFormsHost Grid.Column="1" Height="20">
+                                <winform:NumericUpDown x:Name="KMinAcceptable" Dock="Fill" Maximum="100" Minimum="-100" DecimalPlaces="2" Enabled="True" Visible="True" TabIndex="12"/>
+                            </WindowsFormsHost>
+                            <WindowsFormsHost Grid.Row="1" Grid.Column="1" Height="20">
+                                <winform:NumericUpDown x:Name="KMaxAcceptable" Dock="Fill" Enabled="True" DecimalPlaces="2" Maximum="100" Minimum="-100" Visible="True" TabIndex="12"/>
+                            </WindowsFormsHost>
                         </Grid>
                     </GroupBox>
-                    <GroupBox x:Name="groupBox2" Header="Axis Limits" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabIndex="12" FontSize="9">
+                    <GroupBox x:Name="groupBox2" Header="Axis Limits" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabIndex="12" FontSize="11">
                         <Grid>
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
                                 <RowDefinition Height="1*"></RowDefinition>
                                 <RowDefinition Height="1*"></RowDefinition>
                                 <RowDefinition Height="1*"></RowDefinition>
@@ -110,11 +116,25 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"></ColumnDefinition>
                                 <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <xctk:IntegerUpDown Grid.Row="0" Grid.ColumnSpan="2" Height="20" Margin="24 0 24 0"></xctk:IntegerUpDown>
-                            <xctk:IntegerUpDown Grid.Row="2" Grid.ColumnSpan="2" Height="20" Margin="24 0 24 0"></xctk:IntegerUpDown>
-                            <xctk:IntegerUpDown Grid.Row="1" Grid.Column="0" Height="20" Margin="3 0 3 0"></xctk:IntegerUpDown>
-                            <xctk:IntegerUpDown Grid.Row="1" Grid.Column="1" Height="20" Margin="3 0 3 0"></xctk:IntegerUpDown>
+                            
+                            <WindowsFormsHost Grid.RowSpan="3" Height="20" Grid.Column="1">
+                                <winform:NumericUpDown Dock="Fill"/>
+                            </WindowsFormsHost>
+
+                            <WindowsFormsHost Grid.Row="3" Grid.RowSpan="3" Height="20" Grid.Column="1">
+                                <winform:NumericUpDown Dock="Fill"/>
+                            </WindowsFormsHost>
+
+                            <WindowsFormsHost Grid.Row="2" Grid.RowSpan="3" Height="20" Grid.Column="0" Margin="0 0 2 0">
+                                <winform:NumericUpDown Dock="Fill"/>
+                            </WindowsFormsHost>
+
+                            <WindowsFormsHost Grid.Row="2" Grid.RowSpan="3" Height="20" Grid.Column="2" Margin="2 0 0 0">
+                                <winform:NumericUpDown Dock="Fill"/>
+                            </WindowsFormsHost>
+
                         </Grid>
                     </GroupBox>
                 </Grid>
@@ -151,8 +171,11 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <GroupBox x:Name="groupBox1" Header="Acceptable Intensity Counts" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabIndex="12" FontSize="9">
-                        <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <GroupBox Grid.Row="0" x:Name="groupBox1" Header="Acceptable Intensity Ratios" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabIndex="12" FontSize="11">
+                        <Grid Margin="0 0 0 0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*"></RowDefinition>
                                 <RowDefinition Height="1*"></RowDefinition>
@@ -161,15 +184,22 @@
                                 <ColumnDefinition Width="1*"></ColumnDefinition>
                                 <ColumnDefinition Width="1.5*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Grid.Row="0" FontSize="9">I- Ratio Min</Label>
-                            <Label Grid.Column="0" Grid.Row="1" FontSize="9">I- Ratio Max</Label>
-                            <xctk:DoubleUpDown Grid.Column="1" Margin="1 1 1 1"></xctk:DoubleUpDown>
-                            <xctk:DoubleUpDown Grid.Column="1" Grid.Row="1" Margin="1 1 1 1"></xctk:DoubleUpDown>
+                            <Label x:Name="Label4" Margin="0 0 0 0" Height="23" Grid.Column="0" Grid.Row="0" FontSize="11">I-Ratio Min</Label>
+                            <Label x:Name="Label3" Margin="0,0,0,0" Height="23" Grid.Column="0" Grid.Row="1" FontSize="11">I-Ratio Max</Label>
+                            <WindowsFormsHost Grid.Column="1" Height="20">
+                                <winform:NumericUpDown x:Name="IRatMinAcceptable" Dock="Fill" DecimalPlaces="2" Enabled="True" TabIndex="5" Minimum="-100" Maximum="100" Visible="True" Increment="0.05"/>
+                            </WindowsFormsHost>
+                            <WindowsFormsHost Grid.Row="1" Grid.Column="1" Height="20">
+                                <winform:NumericUpDown Dock="Fill"/>
+                            </WindowsFormsHost>
                         </Grid>
                     </GroupBox>
-                    <GroupBox x:Name="groupBox3" Header="Axis Limits" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabIndex="12" FontSize="9">
+                    <GroupBox x:Name="groupBox3" Header="Axis Limits" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" TabIndex="12" FontSize="11">
                         <Grid>
                             <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
                                 <RowDefinition Height="1*"></RowDefinition>
                                 <RowDefinition Height="1*"></RowDefinition>
                                 <RowDefinition Height="1*"></RowDefinition>
@@ -177,11 +207,29 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"></ColumnDefinition>
                                 <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <xctk:IntegerUpDown Grid.Row="0" Grid.ColumnSpan="2" Height="20" Margin="24 0 24 0"></xctk:IntegerUpDown>
+                            <!--                            <xctk:IntegerUpDown Grid.Row="0" Grid.ColumnSpan="2" Height="20" Margin="24 0 24 0"></xctk:IntegerUpDown>
                             <xctk:IntegerUpDown Grid.Row="2" Grid.ColumnSpan="2" Height="20" Margin="24 0 24 0"></xctk:IntegerUpDown>
                             <xctk:IntegerUpDown Grid.Row="1" Grid.Column="0" Height="20" Margin="3 0 3 0"></xctk:IntegerUpDown>
                             <xctk:IntegerUpDown Grid.Row="1" Grid.Column="1" Height="20" Margin="3 0 3 0"></xctk:IntegerUpDown>
+                            -->
+                            <WindowsFormsHost Grid.RowSpan="3" Height="20" Grid.Column="1">
+                                <winform:NumericUpDown Dock="Fill"/>
+                            </WindowsFormsHost>
+
+                            <WindowsFormsHost Grid.Row="3" Grid.RowSpan="3" Height="20" Grid.Column="1">
+                                <winform:NumericUpDown Dock="Fill"/>
+                            </WindowsFormsHost>
+
+                            <WindowsFormsHost Grid.Row="2" Grid.RowSpan="3" Height="20" Grid.Column="0" Margin="0 0 2 0">
+                                <winform:NumericUpDown Dock="Fill"/>
+                            </WindowsFormsHost>
+
+                            <WindowsFormsHost Grid.Row="2" Grid.RowSpan="3" Height="20" Grid.Column="2" Margin="2 0 0 0">
+                                <winform:NumericUpDown Dock="Fill"/>
+                            </WindowsFormsHost>
+
                         </Grid>
                     </GroupBox>
                 </Grid>

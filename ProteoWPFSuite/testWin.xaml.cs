@@ -22,6 +22,11 @@ namespace ProteoWPFSuite
         public testWin()
         {
             InitializeComponent();
+            
+        }
+
+        private void Dissoci_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
         }
     }
 }

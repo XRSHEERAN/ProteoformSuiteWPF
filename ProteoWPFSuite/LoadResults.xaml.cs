@@ -33,17 +33,6 @@ namespace ProteoWPFSuite
     /// </summary>
     public partial class LoadResults : UserControl, ITabbedMDI, ISweetForm
     {
-        #region Interface Area
-        public string UniqueTabName { get; set; }
-        public event delClosed BeingClosed;
-        public void OnClosing(ITabbedMDI sender) { 
-            if (BeingClosed != null)
-                {
-                    BeingClosed(this, new EventArgs());
-                }
-        }
-        #endregion Interface Area
-
         public LoadResults()
         {
             InitializeComponent();
@@ -52,6 +41,7 @@ namespace ProteoWPFSuite
 
         #region Public Property
         public List<DataTable> DataTables { get; private set; }
+        public ProteoformSweet MDIParent { get; set; }
         #endregion
 
         #region Private Property

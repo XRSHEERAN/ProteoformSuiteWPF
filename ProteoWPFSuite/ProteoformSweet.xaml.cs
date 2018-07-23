@@ -17,7 +17,7 @@ namespace ProteoWPFSuite
     /// <summary>
     /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class ProteoformSweet : UserControl, IParentMDI
+    public partial class ProteoformSweet : UserControl
     {
 
         #region Public Fields
@@ -28,11 +28,7 @@ namespace ProteoWPFSuite
             get;
             set;
         }
-        public void CloseEvent(ITabbedMDI sender, EventArgs e)
-        {
-            MDIChildren.Remove(sender.UniqueTabName);
-
-        }
+        
         //original
         public LoadResults loadResults = new LoadResults();
         public RawExperimentalComponents rawExperimentalComponents = new RawExperimentalComponents();
@@ -94,6 +90,10 @@ namespace ProteoWPFSuite
                 theoreticalDatabase,
 
             };
+            foreach(UserControl uc in forms)
+            {
+                (uc as ITabbedMDI).MDIParent = this; //set the mdi parent
+            }
         }
         #endregion
 
@@ -169,6 +169,15 @@ namespace ProteoWPFSuite
         {
             testWin curr = new testWin();
             curr.Show();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in Enum.GetValues(typeof(MassSpectrometry.DissociationType)))
+            {
+                MessageBox.Show(item.ToString());
+                
+            }
         }
     }
 }

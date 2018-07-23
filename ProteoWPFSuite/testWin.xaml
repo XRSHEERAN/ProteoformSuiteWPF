@@ -17,7 +17,6 @@
         </ObjectDataProvider>
     </Window.Resources>
     <Grid>
-        <ComboBox x:Name="Dissoci" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="150"
-             SelectedIndex="5" ItemsSource="{Binding Source={StaticResource DissociationEnum}}" SelectionChanged="Dissoci_SelectionChanged"/>
+        <local:NeuCodePairs x:Name="test"></local:NeuCodePairs>
     </Grid>
 </Window>

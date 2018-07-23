@@ -88,7 +88,7 @@ namespace ProteoWPFSuite
             {
                 loadResults,
                 theoreticalDatabase,
-
+                neuCodePairs
             };
             foreach(UserControl uc in forms)
             {
@@ -168,6 +168,7 @@ namespace ProteoWPFSuite
         private void testWin(object sender, RoutedEventArgs e)
         {
             testWin curr = new testWin();
+            curr.test.MDIParent = this;
             curr.Show();
         }
 

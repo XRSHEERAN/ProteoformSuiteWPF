@@ -213,6 +213,7 @@
     <Compile Include="DisplayHelper\DisplayComponent.cs" />
     <Compile Include="DisplayHelper\DisplayExperimentalProteoform.cs" />
     <Compile Include="DisplayHelper\DisplayInputFile.cs" />
+    <Compile Include="DisplayHelper\DisplayNeuCodePair.cs" />
     <Compile Include="DisplayHelper\DisplayObject.cs" />
     <Compile Include="DisplayHelper\DisplayTopDownProteoform.cs" />
     <Compile Include="DisplayHelper\DisplayUtility.cs" />

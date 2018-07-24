@@ -28,5 +28,11 @@ namespace ProteoWPFSuite
         private void Dissoci_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
         }
+
+        private void testFunc(object sender, RoutedEventArgs e)
+        {
+            Random rnd = new Random();
+            this.test.LabelTxt = "test"+rnd.Next();
+        }
     }
 }

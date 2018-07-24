@@ -9,6 +9,7 @@ using System.Reflection;
 using System.IO;
 using Microsoft.Win32;
 using System.Diagnostics;
+using System.ComponentModel;
 
 /// <Problems>
 /// - Should convert window to proteoform sweet?
@@ -31,20 +32,38 @@ namespace ProteoWPFSuite
     /// <summary>
     /// Interaction logic for loadResults.xaml
     /// </summary>
-    public partial class LoadResults : UserControl, ITabbedMDI, ISweetForm
+    public partial class LoadResults : UserControl, ITabbedMDI, ISweetForm, INotifyPropertyChanged
     {
         public LoadResults()
         {
             InitializeComponent();
+            this.DataContext = this;
+            this.PropertyChanged += tb_filter1_TextChanged;
             populate_file_lists();
         }
 
         #region Public Property
         public List<DataTable> DataTables { get; private set; }
         public ProteoformSweet MDIParent { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+        public String LabelTxt
+        {
+            get
+            {
+                return _labeltxt;
+            }
+            set
+            {
+                if (_labeltxt==value)
+                    return;
+                _labeltxt = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("LabelTxt"));
+            }
+        }
         #endregion
 
         #region Private Property
+        private String _labeltxt;
         #endregion Private Property
 
         #region Public Methods
@@ -152,7 +171,7 @@ namespace ProteoWPFSuite
         }
         private void cmb_loadTable1_SelectedIndexChanged(object sender, SelectionChangedEventArgs e)
         {
-            lb_filter1.Content = (sender as ComboBox).SelectedItem.ToString();
+            LabelTxt = (sender as ComboBox).SelectedItem.ToString();
         }
         private void populate_file_lists()
         {
@@ -250,8 +269,7 @@ namespace ProteoWPFSuite
 
                 cmb_loadTable1.IsEnabled = false;
             }
-
-            lb_filter1.Content = cmb_loadTable1.SelectedItem.ToString();
+            LabelTxt = cmb_loadTable1.SelectedItem.ToString();
 
             reload_dgvs();
             refresh_dgvs();
@@ -458,6 +476,8 @@ namespace ProteoWPFSuite
         }
 
         System.Windows.Forms.FolderBrowserDialog folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
+
+
         private void btn_browseSummarySaveFolder_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.DialogResult dr = folderBrowser.ShowDialog();
@@ -472,11 +492,12 @@ namespace ProteoWPFSuite
         #endregion FULL RUN & STEP THROUGH Private Methods
 
         #region FILTERS Private Methods
-        private void tb_filter1_TextChanged(object sender, EventArgs e)
+        private void tb_filter1_TextChanged(object sender, PropertyChangedEventArgs e)
         {
             int selected_index = Lollipop.file_lists.ToList().IndexOf(cmb_loadTable1.Text);
-            DisplayUtility.FillDataGridView(dgv_loadFiles1, ExtensionMethods.filter(Sweet.lollipop.get_files(Sweet.lollipop.input_files, Lollipop.file_types[selected_index]), tb_filter1.Text).OfType<InputFile>().Select(f => new DisplayInputFile(f)));
-            DisplayInputFile.FormatInputFileTable(dgv_loadFiles1, Lollipop.file_types[selected_index]);
+            //problem here!!!!!!!!!
+            //DisplayUtility.FillDataGridView(dgv_loadFiles1, ExtensionMethods.filter(Sweet.lollipop.get_files(Sweet.lollipop.input_files, Lollipop.file_types[selected_index]), tb_filter1.Text).OfType<InputFile>().Select(f => new DisplayInputFile(f)));
+            //DisplayInputFile.FormatInputFileTable(dgv_loadFiles1, Lollipop.file_types[selected_index]);
         }
         #endregion FILTERS Private Methods
 
@@ -568,6 +589,7 @@ namespace ProteoWPFSuite
         {
             Sweet.lollipop.calibrate_td_files = (bool)cb_calibrate_td_files.IsChecked;
         }
+        
         /*private void topbar_splitcontainer_SplitterMoved(object sender, SplitterEventArgs e)
 {
 

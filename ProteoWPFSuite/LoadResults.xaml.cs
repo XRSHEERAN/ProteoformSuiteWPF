@@ -21,6 +21,7 @@ using System.ComponentModel;
 /// - Comments with three slashes are for future implementation
 /// - Controls are default to be WPF except for data Grid view
 /// - WPF window close takes care of all dispose things
+/// - selection changed doesnot change the text of combo box in the first place
 /// </remarks>
 /// <TODO>
 /// - Implement ProteoFormSweat
@@ -494,10 +495,10 @@ namespace ProteoWPFSuite
         #region FILTERS Private Methods
         private void tb_filter1_TextChanged(object sender, PropertyChangedEventArgs e)
         {
-            int selected_index = Lollipop.file_lists.ToList().IndexOf(cmb_loadTable1.Text);
+            int selected_index = Lollipop.file_lists.ToList().IndexOf(cmb_loadTable1.SelectedItem.ToString());
             //problem here!!!!!!!!!
-            //DisplayUtility.FillDataGridView(dgv_loadFiles1, ExtensionMethods.filter(Sweet.lollipop.get_files(Sweet.lollipop.input_files, Lollipop.file_types[selected_index]), tb_filter1.Text).OfType<InputFile>().Select(f => new DisplayInputFile(f)));
-            //DisplayInputFile.FormatInputFileTable(dgv_loadFiles1, Lollipop.file_types[selected_index]);
+            DisplayUtility.FillDataGridView(dgv_loadFiles1, ExtensionMethods.filter(Sweet.lollipop.get_files(Sweet.lollipop.input_files, Lollipop.file_types[selected_index]), tb_filter1.Text).OfType<InputFile>().Select(f => new DisplayInputFile(f)));
+            DisplayInputFile.FormatInputFileTable(dgv_loadFiles1, Lollipop.file_types[selected_index]);
         }
         #endregion FILTERS Private Methods
 

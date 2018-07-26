@@ -32,7 +32,7 @@ namespace ProteoWPFSuite
         private void testFunc(object sender, RoutedEventArgs e)
         {
             Random rnd = new Random();
-            this.test.LabelTxt = "test"+rnd.Next();
+            this.test.cmb_loadTable.Text = "test"+rnd.Next();
         }
     }
 }

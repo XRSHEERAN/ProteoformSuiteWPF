@@ -135,10 +135,10 @@ namespace ProteoWPFSuite
         #endregion Public Methods
 
         #region GENERAL TABLE OPTIONS Private Methods
-        private void rb_neucode_CheckedChanged(object sender, EventArgs e)
+        private void rb_neucode_CheckedChanged(object sender, RoutedEventArgs e)
         {
-            ProteoformSweet parMDI = ((MainWindow)MDIHelpers.getParentWindow(this)).MDIParentControl; //get the parent control of the form;
-            ///parMDI.enable_neuCodeProteoformPairsToolStripMenuItem(rb_neucode.Checked);
+            
+            /*MDIParent.enable_neuCodeProteoformPairsToolStripMenuItem(rb_neucode.Checked);
             Sweet.lollipop.neucode_labeled = (bool)rb_neucode.IsChecked;
             Sweet.lollipop.neucode_light_lysine = (bool)rb_neucode.IsChecked;
             Sweet.lollipop.natural_lysine_isotope_abundance = !(bool)rb_neucode.IsChecked;
@@ -148,15 +148,15 @@ namespace ProteoWPFSuite
                 if ((bool)rb_neucode.IsChecked) f.label = Labeling.NeuCode;
                 if ((bool)rb_unlabeled.IsChecked) f.label = Labeling.Unlabeled;
             }
-            populate_file_lists();
+            populate_file_lists();*/
         }
-        private void rb_unlabeled_CheckedChanged(object sender, EventArgs e)
+        private void rb_unlabeled_CheckedChanged(object sender, RoutedEventArgs e)
         { }
-        private void rb_standardOptions_CheckedChanged(object sender, EventArgs e)
+        private void rb_standardOptions_CheckedChanged(object sender, RoutedEventArgs e)
         {
             populate_file_lists();
         }
-        private void rb_chemicalCalibration_CheckedChanged(object sender, EventArgs e)
+        private void rb_chemicalCalibration_CheckedChanged(object sender, RoutedEventArgs e)
         {
             populate_file_lists();
         }
@@ -166,7 +166,7 @@ namespace ProteoWPFSuite
             populate_file_lists();
         }
 
-        private void rb_deconvolution_CheckedChanged(object sender, EventArgs e)
+        private void rb_deconvolution_CheckedChanged(object sender, RoutedEventArgs e)
         {
             populate_file_lists();
         }

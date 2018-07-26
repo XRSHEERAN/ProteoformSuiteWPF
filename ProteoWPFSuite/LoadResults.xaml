@@ -1,4 +1,4 @@
-﻿<UserControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Class="ProteoWPFSuite.LoadResults" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:ProteoWPFSuite" mc:Ignorable="d" FontSize="8" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:winform="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" MinHeight="800">
+﻿<UserControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Class="ProteoWPFSuite.LoadResults" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:ProteoWPFSuite" mc:Ignorable="d" FontSize="8" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:winform="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" MinHeight="800" MinWidth="1200">
     <Grid x:Name="unique">
         <Grid.RowDefinitions>
             <RowDefinition Height="1.25*" />
@@ -16,9 +16,9 @@
 
             <!--Missing checked even handlers!!!!!!!!!!!!!!!!!-->
             <Grid>
-                <RadioButton IsChecked="True" x:Name="rb_standardOptions" Margin="10,10,47,67" Width="68" Height="17" Content="Standard" />
-                <RadioButton x:Name="rb_chemicalCalibration" Margin="10,32,47,45" Width="68" Height="17" Content="Chemical Calibration" />
-                <RadioButton x:Name="rb_deconvolution" Margin="10,49,47,23" Width="68" Height="17" Content="Deconvolution" />
+                <RadioButton IsChecked="True" x:Name="rb_standardOptions" Click="rb_standardOptions_CheckedChanged" Margin="10,10,47,67" Width="68" Height="17" Content="Standard" />
+                <RadioButton x:Name="rb_chemicalCalibration" Margin="10,32,47,45" Width="68" Height="17" Content="Chemical Calibration" Click="rb_chemicalCalibration_CheckedChanged" />
+                <RadioButton x:Name="rb_deconvolution" Margin="10,49,47,23" Width="68" Height="17" Content="Deconvolution" Click="rb_deconvolution_CheckedChanged"/>
             </Grid>
             <!--Finish checked event handlers!!!!!!!!!!!!!!!!!!!-->
         </GroupBox>
@@ -66,8 +66,8 @@
                         </Grid>
                     </GroupBox>
                     <Grid Grid.Row="0" Grid.Column="0" Background="White">
-                        <RadioButton x:Name="rb_neucode" Content="NeoCode Labeled" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,10,0,0" />
-                        <RadioButton x:Name="rb_unlabeled" IsChecked="True" Content="Unlabeled" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,31,0,0" />
+                        <RadioButton x:Name="rb_neucode" Content="NeoCode Labeled" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,10,0,0" Checked="rb_neucode_CheckedChanged" Unchecked="rb_neucode_CheckedChanged"/>
+                        <RadioButton x:Name="rb_unlabeled" Checked="rb_neucode_CheckedChanged" Unchecked="rb_neucode_CheckedChanged" IsChecked="True" Content="Unlabeled" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,31,0,0" />
                     </Grid>
                 </Grid>
             </Border>
